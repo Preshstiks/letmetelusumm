@@ -6,17 +6,23 @@ export default function Home() {
           LETMETEL<span className="text-red">USUMM</span>
         </h1>
         <h1 className="font-oswald py-3">LOGIN TO CONTINUE</h1>
-        <p className="font-playfair">
+        <p className="font-playfair py-3">
           Don't have an account? <span className="text-red">Create</span>
         </p>
         <form className="font-playfair">
           <div>
-            <label>Username</label>
+            <div className="pt-2 pb-1.5">
+              <label className="">Username</label>
+            </div>
             <div>
-              <input type="text" name="username" />
+              <input
+                className="p-3 outline-none border border-black rounded-md w-full"
+                type="text"
+                name="username"
+              />
             </div>
           </div>
-          <div>
+          <div className="pt-6">
             <label>Password</label>
             <div>
               <input type="password" name="password" />

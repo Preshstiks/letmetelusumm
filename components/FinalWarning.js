@@ -3,7 +3,7 @@ const FinalWarning = () => {
     <div className="font-playfair">
       <div>
         <div>
-          <h1 className="font-bebas text-red text-[25px]">Final warning!!</h1>
+          <h1 className="font-bebas text-red text-[25px]">Final warning!!!</h1>
         </div>
         <div>
           <p>Your comment was flagged again.</p>

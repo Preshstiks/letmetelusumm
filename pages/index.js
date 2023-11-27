@@ -19,7 +19,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-[400px] p-5 rounded-xl bg-dark relative font-playfair">
-          {/* <Image
+          <Image
             className="absolute top-[-18px] left-[-18px]"
             src="/subtract.png"
             width={70}
@@ -42,7 +42,7 @@ export default function Home() {
             src="/subtract2.png"
             width={70}
             height={70}
-          /> */}
+          />
           <div className="flex items-center justify-between">
             <div>
               <p className="py-2">2023</p>

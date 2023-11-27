@@ -2,7 +2,7 @@ import Quote from "@/components/Quote";
 import Image from "next/image";
 export default function Home() {
   return (
-    <div className="bg-dime pb-[60px]">
+    <div className="bg-dime pb-[60px] pt-10">
       <div className="flex justify-between items-center py-6">
         <div>
           <div className="pb-[40px]">
@@ -21,25 +21,25 @@ export default function Home() {
         <div className="w-[400px] p-5 rounded-xl bg-dark relative font-playfair">
           <Image
             className="absolute top-[-18px] left-[-18px]"
-            src="/subtract.svg"
+            src="/subtract.png"
             width={70}
             height={70}
           />
           <Image
             className="absolute top-[-18px] right-[-18px]"
-            src="/subtract1.svg"
+            src="/subtract1.png"
             width={70}
             height={70}
           />
           <Image
             className="absolute bottom-[-18px] left-[-18px]"
-            src="/subtract2.svg"
+            src="/subtract3.png"
             width={70}
             height={70}
           />
           <Image
             className="absolute bottom-[-18px] right-[-18px]"
-            src="/subtract3.svg"
+            src="/subtract2.png"
             width={70}
             height={70}
           />

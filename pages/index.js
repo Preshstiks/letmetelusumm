@@ -21,25 +21,25 @@ export default function Home() {
         <div className="w-[400px] p-5 rounded-xl bg-dark relative font-playfair">
           <Image
             className="absolute top-[-18px] left-[-18px]"
-            src="/subtract.png"
+            src="/subtract.svg"
             width={70}
             height={70}
           />
           <Image
             className="absolute top-[-18px] right-[-18px]"
-            src="/subtract1.png"
+            src="/subtract1.svg"
             width={70}
             height={70}
           />
           <Image
             className="absolute bottom-[-18px] left-[-18px]"
-            src="/subtract3.png"
+            src="/subtract2.svg"
             width={70}
             height={70}
           />
           <Image
             className="absolute bottom-[-18px] right-[-18px]"
-            src="/subtract2.png"
+            src="/subtract3.svg"
             width={70}
             height={70}
           />

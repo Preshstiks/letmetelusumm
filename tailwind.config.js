@@ -14,13 +14,16 @@ module.exports = {
       },
     },
     fontFamily: {
-      oswald: ["Oswald", "sans-serif"],
+      bebas: ["Bebas Neue", "sans-serif"],
       playfair: ["Playfair Display", "serif"],
     },
     colors: {
       red: "#951216",
       white: "#FFFFFF",
       black: "#000000",
+      gray: "#E5E4E2",
+      dime: "#FCFCFC",
+      dark: "#F2F2F2",
     },
   },
   plugins: [],

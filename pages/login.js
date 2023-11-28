@@ -1,8 +1,8 @@
 import Letmetelusumm from "@/components/letmetelusumm";
 const Login = () => {
   return (
-    <div className="bg-dime w-full sm:my-[60px] my-5 flex select-none items-center justify-between">
-      <div className="lg:block hidden">
+    <div className="bg-dime w-full sm:my-[60px] minism:px-[10%] minism:mt-[40px] my-0 flex select-none items-center justify-between">
+      <div className="smxl:block hidden">
         <div className="grid grid-cols-2 gap-[50px]">
           <Letmetelusumm />
           <Letmetelusumm />
@@ -10,12 +10,12 @@ const Login = () => {
           <Letmetelusumm />
         </div>
       </div>
-      <div className="bg-dime shadow-md p-10 w-[370px]">
-        <h1 className="font-bebas py-3 text-black text-[23px]">
+      <div className="bg-dime shadow-md p-10 minism:w-[31rem] w-full">
+        <h1 className="font-bebas py-3 text-black text-[27px]">
           LETMETEL<span className="text-red">USUMM</span>
         </h1>
-        <h1 className="font-bebas py-3 text-[20px]">LOGIN TO CONTINUE</h1>
-        <p className="font-playfair py-3 text-[15px]">
+        <h1 className="font-bebas py-3 text-[23px]">LOGIN TO CONTINUE</h1>
+        <p className="font-playfair py-3">
           Don't have an account? <span className="text-red">Create</span>
         </p>
         <form className="font-playfair text-[15px]">

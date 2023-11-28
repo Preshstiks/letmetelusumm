@@ -2,8 +2,8 @@ import Letmetelusumm from "@/components/letmetelusumm";
 
 const AppealForm = () => {
   return (
-    <div className="bg-dime w-full flex select-none mt-[40px] pb-[100px] items-center justify-between">
-      <div>
+    <div className="bg-dime w-full flex select-none px-0 minism:px-[10%] minism:mt-[40px] mt:[20px] minism:pb-[100px] items-center justify-between">
+      <div className="minixl:block hidden">
         <div className="grid grid-cols-2 gap-[50px]">
           <Letmetelusumm />
           <Letmetelusumm />

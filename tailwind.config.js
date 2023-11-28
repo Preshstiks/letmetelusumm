@@ -26,6 +26,7 @@ module.exports = {
       dark: "#F2F2F2",
     },
     screens: {
+      minism: "530px",
       sm: "640px",
       // => @media (min-width: 640px) { ... }
 
@@ -34,7 +35,10 @@ module.exports = {
       minilg: "900px",
 
       lg: "1024px",
+      maxlg: "1050px",
       // => @media (min-width: 1024px) { ... }
+      minixl: "1120px",
+      smxl: "1170px",
 
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }

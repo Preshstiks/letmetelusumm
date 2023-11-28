@@ -1,35 +1,16 @@
-import { useGetAllPosts } from "@/api-services/post";
-import Quote from "@/components/Quote";
-import Image from "next/image";
+import { useGetSinglePost } from "@/api-services/post";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
-export default function Home() {
-  const { data, isLoading } = useGetAllPosts();
-  useEffect(() => console.log({ data }), [data]);
 
+const BlogPost = () => {
+  const router = useRouter();
+  useEffect(() => console.log({ id: router.query }), [router]);
+  const { data, isLoading } = useGetSinglePost({ id: router.query?.post });
   return (
-    <div className="bg-dime pb-[60px] pt-10 px-[10%]">
-      <div className="flex justify-between maxlg:flex-row flex-col maxlg:items-center py-6">
-        <div className="w-[38rem]">
-          <div className="pb-[40px]">
-            <h1 className="text-[33px] font-bebas">WELCOME BACK ABI!</h1>
-            <p className=" font-playfair text-[13px]">
-              Me cant wait to tell you what you missed...
-            </p>
-          </div>
-          <div className="hidden flex-wrap gap-[25px] maxlg:flex pt-10">
-            {data &&
-              data.map((item) => (
-                <Quote
-                  key={item?._id}
-                  title={item?.title}
-                  body={item?.body}
-                  id={item?._id}
-                />
-              ))}
-          </div>
-        </div>
-        <div className="w-[38.4375rem] h-[46.375rem] p-[2rem] rounded-xl flex flex-col justify-between bg-dark relative font-playfair">
-          <div className="absolute top-[-18px] left-[-18px]">
+    <div className="bg-dime pt-[60px] h-screen px-[10%] flex minilg:flex-row flex-col justify-between gap-8">
+      <div className="basis-[50%] relative min-w-[50%]  bg-white shadow-md max-h-[85%]">
+        <div className="p-8  overflow-y-auto h-full">
+          <div className="absolute top-[-18px] z-20 left-[-18px]">
             <svg
               width="61"
               height="51"
@@ -139,7 +120,7 @@ export default function Home() {
               </defs>
             </svg>
           </div>
-          <div className="absolute bottom-[-18px] left-[-18px]">
+          <div className="absolute bottom-0 left-[-18px]">
             <svg
               width="73"
               height="60"
@@ -194,7 +175,7 @@ export default function Home() {
               </defs>
             </svg>
           </div>
-          <div className="absolute bottom-[-18px] right-[-18px]">
+          <div className="absolute bottom-0 right-[-18px]">
             <svg
               width="70"
               height="58"
@@ -249,30 +230,108 @@ export default function Home() {
               </defs>
             </svg>
           </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="py-2 text-[1.25rem]">2023</p>
-              <h1 className="py-[0.7rem] text-[1.875rem]">TRENDING NEWS</h1>
-              <h1 className="py-2 font-bebas text-[2.1875rem]">
-                NAME OF THE NEWS
-              </h1>
-            </div>
-            <div className="basis-[30%]">
-              <q className="text-[1rem]">
-                A special cut out from the blog post that is mentioned here
-                juicy stuff
-              </q>
-            </div>
+          <h1 className="text-[18px] font-bebas">
+            LETMETEL<span className="text-red">USUMM</span>
+          </h1>
+          <p className="font-playfair text-[13px]">
+            23rd November 2023, 10:23pm
+          </p>
+          <q className="uppercase font-bebas text-[18px]">{data?.title}</q>
+          <p className="font-playfair">{data?.body}</p>
+        </div>
+      </div>
+      <div className="basis-[50%] overflow-y-auto">
+        <div>
+          <h1 className="uppercase font-bebas text-[18px] pb-6">comments</h1>
+        </div>
+        <div className="flex gap-2">
+          <div className="">
+            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
           </div>
-          <div className="pt-10 w-[32.9375rem] h-[29.4375rem] relative">
-            <Image
-              className="mx-auto w-[33rem] rounded-[15px] object-cover"
-              src="/news2.png"
-              layout="fill"
-            />
+          <div className="">
+            <div className="flex gap-2">
+              <h1 className="uppercase font-bebas">Annethfranklin</h1>
+              <p className="text-[#747474] font-playfair text-[13px]">
+                23 hours ago
+              </p>
+            </div>
+            <p className="font-playfair">
+              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
+            </p>
+            <h1 className="uppercase font-bebas py-6">reply</h1>
           </div>
+        </div>
+        <div className="flex gap-2 ml-[65px]">
+          <div className="">
+            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
+          </div>
+          <div>
+            <div className="flex gap-2">
+              <h1 className="uppercase font-bebas">JohnsonJ</h1>
+              <p className="text-[#747474] font-playfair text-[13px]">
+                22 hours ago
+              </p>
+            </div>
+            <p className="font-playfair">
+              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
+            </p>
+            <h1 className="uppercase font-bebas py-6">reply</h1>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <div className="">
+            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
+          </div>
+          <div>
+            <div className="flex gap-2">
+              <h1 className="uppercase font-bebas">bthebeestbuggg</h1>
+              <p className="text-[#747474] font-playfair text-[13px]">
+                23 hours ago
+              </p>
+            </div>
+            <p className="font-playfair">
+              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
+            </p>
+            <h1 className="uppercase font-bebas py-6">reply</h1>
+          </div>
+        </div>
+        <div>
+          <textarea
+            placeholder="Message..."
+            className=" w-full rounded-md resize-none placeholder:text-black font-playfair border border-gray outline-none p-7"
+            rows={2}
+          />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default BlogPost;

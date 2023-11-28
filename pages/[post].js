@@ -1,6 +1,8 @@
 import { useGetSinglePost } from "@/api-services/post";
+import Comment from "@/components/Comment";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { format, formatDistance, formatRelative, subDays } from "date-fns";
 
 const BlogPost = () => {
   const router = useRouter();
@@ -244,84 +246,9 @@ const BlogPost = () => {
         <div>
           <h1 className="uppercase font-bebas text-[18px] pb-6">comments</h1>
         </div>
-        <div className="flex gap-2">
-          <div className="">
-            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
-          </div>
-          <div className="">
-            <div className="flex gap-2">
-              <h1 className="uppercase font-bebas">Annethfranklin</h1>
-              <p className="text-[#747474] font-playfair text-[13px]">
-                23 hours ago
-              </p>
-            </div>
-            <p className="font-playfair">
-              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
-              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
-              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
-            </p>
-            <h1 className="uppercase font-bebas py-6">reply</h1>
-          </div>
-        </div>
-        <div className="flex gap-2 ml-[65px]">
-          <div className="">
-            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
-          </div>
-          <div>
-            <div className="flex gap-2">
-              <h1 className="uppercase font-bebas">JohnsonJ</h1>
-              <p className="text-[#747474] font-playfair text-[13px]">
-                22 hours ago
-              </p>
-            </div>
-            <p className="font-playfair">
-              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
-              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
-              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
-            </p>
-            <h1 className="uppercase font-bebas py-6">reply</h1>
-          </div>
-        </div>
-        <div className="flex gap-2">
-          <div className="">
-            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
-          </div>
-          <div>
-            <div className="flex gap-2">
-              <h1 className="uppercase font-bebas">bthebeestbuggg</h1>
-              <p className="text-[#747474] font-playfair text-[13px]">
-                23 hours ago
-              </p>
-            </div>
-            <p className="font-playfair">
-              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
-              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
-              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
-              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
-            </p>
-            <h1 className="uppercase font-bebas py-6">reply</h1>
-          </div>
-        </div>
+        {data?.comments.length > 0 &&
+          data?.comments?.map((item) => <Comment {...item} />)}
+
         <div>
           <textarea
             placeholder="Message..."

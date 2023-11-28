@@ -1,5 +1,22 @@
+import { useCreateAccount } from "@/api-services/auth";
 import Letmetelusumm from "@/components/letmetelusumm";
+import { FormikProvider, useFormik } from "formik";
+import { useRouter } from "next/router";
 const Login = () => {
+  const router = useRouter();
+  const { mutate: createUser, isPending } = useCreateAccount();
+  const formik = useFormik({
+    validationSchema: "",
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      email: "",
+    },
+    onSubmit: (values) => {
+      createUser(values, { onSuccess: () => router.push("/") });
+    },
+  });
+  const { setFieldValue } = formik;
   return (
     <div className="bg-dime w-full sm:my-[60px] my-5 flex select-none items-center justify-between">
       <div className="lg:block hidden">
@@ -10,43 +27,73 @@ const Login = () => {
           <Letmetelusumm />
         </div>
       </div>
-      <div className="bg-dime shadow-md p-10 w-[370px]">
+      <div className="bg-dime shadow-md p-10 w-[496px]">
         <h1 className="font-bebas py-3 text-black text-[23px]">
           LETMETEL<span className="text-red">USUMM</span>
         </h1>
-        <h1 className="font-bebas py-3 text-[20px]">LOGIN TO CONTINUE</h1>
-        <p className="font-playfair py-3 text-[15px]">
-          Don't have an account? <span className="text-red">Create</span>
-        </p>
-        <form className="font-playfair text-[15px]">
-          <div>
-            <div className="pt-2 pb-1.5">
-              <label className="">Username</label>
+        <h1 className="font-bebas py-3 text-[20px]">CREATE AN ACCOUNT</h1>
+
+        <FormikProvider value={formik}>
+          <form
+            className="font-playfair text-[15px] space-y-[2.81rem]"
+            onSubmit={formik.handleSubmit}
+          >
+            <div>
+              <div className="pt-2 pb-1.5">
+                <label className="">Firstname</label>
+              </div>
+              <div>
+                <input
+                  className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  onChange={({ target: { value } }) =>
+                    setFieldValue("first_name", value)
+                  }
+                />
+              </div>
             </div>
             <div>
-              <input
-                className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
-                type="text"
-                name="username"
-              />
-            </div>
-          </div>
-          <div className="pt-6">
-            <div className="pt-2 pb-1.5">
-              <label>Password</label>
+              <div className="pt-2 pb-1.5">
+                <label className="">Lastname</label>
+              </div>
+              <div>
+                <input
+                  className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  onChange={({ target: { value } }) =>
+                    setFieldValue("last_name", value)
+                  }
+                />
+              </div>
             </div>
             <div>
-              <input
-                className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
-                type="password"
-                name="password"
-              />
+              <div className="pt-2 pb-1.5">
+                <label>Email</label>
+              </div>
+              <div>
+                <input
+                  className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
+                  type="email"
+                  name="email"
+                  id="email"
+                  onChange={({ target: { value } }) =>
+                    setFieldValue("email", value)
+                  }
+                />
+              </div>
             </div>
-          </div>
-          <button className="p-3 bg-red border border-red hover:bg-opacity-0 hover:text-red text-white rounded-md w-full mt-10">
-            Login
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="p-3 bg-red border border-red hover:bg-opacity-0 hover:text-red text-white rounded-md w-full mt-10"
+            >
+              {isPending ? "Creating..." : "Create account"}
+            </button>
+          </form>
+        </FormikProvider>
       </div>
     </div>
   );

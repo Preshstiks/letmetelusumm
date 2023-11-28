@@ -1,34 +1,16 @@
-import { useGetAllPosts } from "@/api-services/post";
-import Quote from "@/components/Quote";
+import { useGetSinglePost } from "@/api-services/post";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
-export default function Home() {
-  const { data, isLoading } = useGetAllPosts();
-  useEffect(() => console.log({ data }), [data]);
 
+const BlogPost = () => {
+  const router = useRouter();
+  useEffect(() => console.log({ id: router.query }), [router]);
+  const { data, isLoading } = useGetSinglePost({ id: router.query?.post });
   return (
-    <div className="bg-dime pb-[60px] pt-10">
-      <div className="flex justify-between items-center py-6">
-        <div>
-          <div className="pb-[40px]">
-            <h1 className="text-[33px] font-bebas">WELCOME BACK ABI!</h1>
-            <p className=" font-playfair text-[13px]">
-              Me cant wait to tell you what you missed...
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-[50px] pt-10">
-            {data &&
-              data.map((item) => (
-                <Quote
-                  key={item?._id}
-                  title={item?.title}
-                  body={item?.body}
-                  id={item?._id}
-                />
-              ))}
-          </div>
-        </div>
-        <div className="w-[38.4375rem] p-5 rounded-xl h-[46.375rem] relative font-playfair bg-[#F2F2F2]">
+    <div className="bg-dime py-[60px] flex minilg:flex-row flex-col justify-between gap-8">
+      {data && (
+        <div className="basis-[50%] bg-white shadow-md p-8 relative">
           <div className="absolute top-[-18px] left-[-18px]">
             <svg
               width="61"
@@ -249,28 +231,108 @@ export default function Home() {
               </defs>
             </svg>
           </div>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="py-2">2023</p>
-              <h1 className="py-2 ">TRENDING NEWS</h1>
-              <h1 className="py-2 font-bebas text-[20px]">NAME OF THE NEWS</h1>
-            </div>
-            <div className="basis-1/2">
-              <q className="text-[13px]">
-                A special cut out from the blog post that is mentioned here
-                juicy stuff
-              </q>
-            </div>
+          <h1 className="text-[18px] font-bebas">
+            LETMETEL<span className="text-red">USUMM</span>
+          </h1>
+          <p className="font-playfair text-[13px]">
+            23rd November 2023, 10:23pm
+          </p>
+          <q className="uppercase font-bebas text-[18px]">{data?.title}</q>
+          <p className="font-playfair">{data?.body}</p>
+        </div>
+      )}
+      <div className="basis-[50%]">
+        <div>
+          <h1 className="uppercase font-bebas text-[18px] pb-6">comments</h1>
+        </div>
+        <div className="flex gap-2">
+          <div className="">
+            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
           </div>
-          <div className="w-[32.9375rem] pt-10 relative h-[29.4375rem]">
-            <Image
-              className="mx-auto rounded-[15px] object-cover"
-              src="/news2.png"
-              layout="fill"
-            />
+          <div className="">
+            <div className="flex gap-2">
+              <h1 className="uppercase font-bebas">Annethfranklin</h1>
+              <p className="text-[#747474] font-playfair text-[13px]">
+                23 hours ago
+              </p>
+            </div>
+            <p className="font-playfair">
+              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
+            </p>
+            <h1 className="uppercase font-bebas py-6">reply</h1>
           </div>
+        </div>
+        <div className="flex gap-2 ml-[65px]">
+          <div className="">
+            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
+          </div>
+          <div>
+            <div className="flex gap-2">
+              <h1 className="uppercase font-bebas">JohnsonJ</h1>
+              <p className="text-[#747474] font-playfair text-[13px]">
+                22 hours ago
+              </p>
+            </div>
+            <p className="font-playfair">
+              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
+            </p>
+            <h1 className="uppercase font-bebas py-6">reply</h1>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <div className="">
+            <div className="h-[50px] w-[50px] bg-gray rounded-full border border-red"></div>
+          </div>
+          <div>
+            <div className="flex gap-2">
+              <h1 className="uppercase font-bebas">bthebeestbuggg</h1>
+              <p className="text-[#747474] font-playfair text-[13px]">
+                23 hours ago
+              </p>
+            </div>
+            <p className="font-playfair">
+              lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsumlorem ipsum lorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem
+              ipsumlorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum
+              lorem ipsumlorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem{" "}
+            </p>
+            <h1 className="uppercase font-bebas py-6">reply</h1>
+          </div>
+        </div>
+        <div>
+          <textarea
+            placeholder="Message..."
+            className=" w-full rounded-md resize-none placeholder:text-black font-playfair border border-gray outline-none p-7"
+            rows={2}
+          />
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default BlogPost;

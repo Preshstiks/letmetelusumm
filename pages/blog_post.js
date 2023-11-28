@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BlogPost = () => {
   return (
-    <div className="bg-dime py-[60px] flex justify-between gap-8">
+    <div className="bg-dime py-[60px] flex minilg:flex-row flex-col justify-between gap-8">
       <div className="basis-[50%] bg-white shadow-md p-8 relative">
         <div className="absolute top-[-18px] left-[-18px]">
           <svg

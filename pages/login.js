@@ -1,8 +1,8 @@
 import Letmetelusumm from "@/components/letmetelusumm";
 const Login = () => {
   return (
-    <div className="bg-dime h-screen w-full flex select-none items-center px-[10%] justify-between">
-      <div>
+    <div className="bg-dime w-full sm:my-[60px] my-5 flex select-none items-center justify-between">
+      <div className="lg:block hidden">
         <div className="grid grid-cols-2 gap-[50px]">
           <Letmetelusumm />
           <Letmetelusumm />

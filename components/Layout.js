@@ -2,7 +2,7 @@ import Navbar from "./Navbar";
 
 const Layout = ({ children }) => {
   return (
-    <div className="px-[10%] bg-dime">
+    <div className="bg-dime">
       <Navbar />
       {children}
     </div>

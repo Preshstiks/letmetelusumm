@@ -1,15 +1,8 @@
-import { useGetSinglePost } from "@/api-services/post";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-
 const BlogPost = () => {
-  const router = useRouter();
-  useEffect(() => console.log({ id: router.query }), [router]);
-  const { data, isLoading } = useGetSinglePost({ id: router.query?.post });
   return (
     <div className="bg-dime pt-[60px] h-screen px-[10%] flex minilg:flex-row flex-col justify-between gap-8">
-      <div className="basis-[50%] relative min-w-[50%]  bg-white shadow-md max-h-[85%]">
-        <div className="p-8  overflow-y-auto h-full">
+      <div className="basis-[50%]  overflow-y-auto bg-white shadow-md">
+        <div className="p-8 relative">
           <div className="absolute top-[-18px] z-20 left-[-18px]">
             <svg
               width="61"
@@ -120,7 +113,7 @@ const BlogPost = () => {
               </defs>
             </svg>
           </div>
-          <div className="absolute bottom-0 left-[-18px]">
+          <div className="absolute bottom-[-70px] left-[-18px]">
             <svg
               width="73"
               height="60"
@@ -175,7 +168,7 @@ const BlogPost = () => {
               </defs>
             </svg>
           </div>
-          <div className="absolute bottom-0 right-[-18px]">
+          <div className="absolute bottom-[-18px] right-[-18px]">
             <svg
               width="70"
               height="58"
@@ -236,8 +229,34 @@ const BlogPost = () => {
           <p className="font-playfair text-[13px]">
             23rd November 2023, 10:23pm
           </p>
-          <q className="uppercase font-bebas text-[18px]">{data?.title}</q>
-          <p className="font-playfair">{data?.body}</p>
+          <q className="uppercase font-bebas text-[18px]">
+            lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipsum
+          </q>
+          <p className="font-playfair">
+            lorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ipslorem ipsum lorem ipsumlorem ipsum lorem ipsumlorem ipsum lorem
+            ips
+          </p>
         </div>
       </div>
       <div className="basis-[50%] overflow-y-auto">

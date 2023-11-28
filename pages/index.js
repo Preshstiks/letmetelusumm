@@ -7,16 +7,16 @@ export default function Home() {
   useEffect(() => console.log({ data }), [data]);
 
   return (
-    <div className="bg-dime pb-[60px] pt-10">
-      <div className="flex justify-between items-center py-6">
-        <div>
+    <div className="bg-dime pb-[60px] pt-10 px-[10%]">
+      <div className="flex justify-between maxlg:flex-row flex-col maxlg:items-center py-6">
+        <div className="w-[38rem]">
           <div className="pb-[40px]">
             <h1 className="text-[33px] font-bebas">WELCOME BACK ABI!</h1>
             <p className=" font-playfair text-[13px]">
               Me cant wait to tell you what you missed...
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-[50px] pt-10">
+          <div className="hidden flex-wrap gap-[25px] maxlg:flex pt-10">
             {data &&
               data.map((item) => (
                 <Quote
@@ -28,7 +28,7 @@ export default function Home() {
               ))}
           </div>
         </div>
-        <div className="w-[38.4375rem] p-5 rounded-xl h-[46.375rem] relative font-playfair bg-[#F2F2F2]">
+        <div className="w-[38.4375rem] h-[46.375rem] p-[2rem] rounded-xl flex flex-col justify-between bg-dark relative font-playfair">
           <div className="absolute top-[-18px] left-[-18px]">
             <svg
               width="61"
@@ -251,20 +251,22 @@ export default function Home() {
           </div>
           <div className="flex items-center justify-between">
             <div>
-              <p className="py-2">2023</p>
-              <h1 className="py-2 ">TRENDING NEWS</h1>
-              <h1 className="py-2 font-bebas text-[20px]">NAME OF THE NEWS</h1>
+              <p className="py-2 text-[1.25rem]">2023</p>
+              <h1 className="py-[0.7rem] text-[1.875rem]">TRENDING NEWS</h1>
+              <h1 className="py-2 font-bebas text-[2.1875rem]">
+                NAME OF THE NEWS
+              </h1>
             </div>
-            <div className="basis-1/2">
-              <q className="text-[13px]">
+            <div className="basis-[30%]">
+              <q className="text-[1rem]">
                 A special cut out from the blog post that is mentioned here
                 juicy stuff
               </q>
             </div>
           </div>
-          <div className="w-[32.9375rem] pt-10 relative h-[29.4375rem]">
+          <div className="pt-10 w-[32.9375rem] h-[29.4375rem] relative">
             <Image
-              className="mx-auto rounded-[15px] object-cover"
+              className="mx-auto w-[33rem] rounded-[15px] object-cover"
               src="/news2.png"
               layout="fill"
             />

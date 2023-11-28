@@ -18,8 +18,8 @@ const Login = () => {
   });
   const { setFieldValue } = formik;
   return (
-    <div className="bg-dime w-full sm:my-[60px] my-5 flex select-none items-center justify-between">
-      <div className="lg:block hidden">
+    <div className="bg-dime w-full sm:my-[60px] minism:px-[10%] minism:mt-[40px] my-0 flex select-none items-center justify-between">
+      <div className="smxl:block hidden">
         <div className="grid grid-cols-2 gap-[50px]">
           <Letmetelusumm />
           <Letmetelusumm />
@@ -27,11 +27,11 @@ const Login = () => {
           <Letmetelusumm />
         </div>
       </div>
-      <div className="bg-dime shadow-md p-10 w-[496px]">
-        <h1 className="font-bebas py-3 text-black text-[23px]">
+      <div className="bg-dime shadow-md p-10 minism:w-[31rem] w-full">
+        <h1 className="font-bebas py-3 text-black text-[27px]">
           LETMETEL<span className="text-red">USUMM</span>
         </h1>
-        <h1 className="font-bebas py-3 text-[20px]">CREATE AN ACCOUNT</h1>
+        <h1 className="font-bebas py-3 text-[23px]">CREATE AN ACCOUNT</h1>
 
         <FormikProvider value={formik}>
           <form

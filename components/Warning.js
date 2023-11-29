@@ -1,21 +1,23 @@
 const Warning = () => {
   return (
-    <div className="font-playfair">
+    <div className="font-playfair bg-dime h-screen flex items-center justify-center text-center">
       <div>
-        <div>
-          <h1 className="font-bebas text-[25px] text-red">WARNING</h1>
+        <div className="pb-3">
+          <h1 className="font-bebas text-[1.875rem] text-red">WARNING</h1>
         </div>
         <div>
-          <p>Your recent comment may violate our guidelines.</p>
+          <p className="text-[1.125rem] py-1">
+            Your recent comment may violate our guidelines.
+          </p>
         </div>
-        <div>
-          <p>
+        <div className="py-1">
+          <p className="text-[1.125rem]">
             Please review and adjust your tone to maintain a positive and
             respectful environment.
           </p>
         </div>
-        <div>
-          <p>This is your first warning!.</p>
+        <div className="py-1">
+          <p className="text-[1.125rem]">This is your first warning!.</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,42 @@
+export const AppealData = [
+  {
+    userName: "RitaCuprbcut",
+    appealNumber: "#10059",
+    dateAndTime: "02|12|23  11:59:02pm",
+    Reason: "Miscommunication",
+    Status: "Blocked",
+    Action: "action",
+  },
+  {
+    userName: "Badboydams",
+    appealNumber: "#10058",
+    dateAndTime: "01|12|23  02:69:02am",
+    Reason: "Popularity",
+    Status: "Flagged x3",
+    Action: "action",
+  },
+  {
+    userName: "Loudmachine154",
+    appealNumber: "#10057 ",
+    dateAndTime: "31|12|23  08:38:02am",
+    Reason: "Engagement",
+    Status: "Flagged x2",
+    Action: "action",
+  },
+  {
+    userName: "PurplePumpkin",
+    appealNumber: "#10055",
+    dateAndTime: "29|11|23  01:59:62pm",
+    Reason: "None",
+    Status: "Flagged x2",
+    Action: "action",
+  },
+  {
+    userName: "Blackmama10004",
+    appealNumber: "#10051",
+    dateAndTime: "27|11|23  11:25:45am",
+    Reason: "None",
+    Status: "Flagged x3",
+    Action: "action",
+  },
+];

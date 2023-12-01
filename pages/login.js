@@ -18,12 +18,12 @@ const Login = () => {
     onSubmit: (values) => {
       loginUser(values, {
         onSuccess: () => {
-          CustomToast({ message: "Login successful", type: "success" });
           router.push("/");
+          CustomToast({ message: "Login successful", type: "success" });
         },
-        onError: (error) => {
+        onError: (err) => {
           CustomToast({
-            message: error.message,
+            message: err.message,
             type: "error",
           });
         },

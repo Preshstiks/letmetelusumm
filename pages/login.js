@@ -4,7 +4,6 @@ import Letmetelusumm from "@/components/letmetelusumm";
 import { FormikProvider, useFormik } from "formik";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const router = useRouter();
@@ -18,8 +17,8 @@ const Login = () => {
     onSubmit: (values) => {
       loginUser(values, {
         onSuccess: () => {
-          router.push("/");
           CustomToast({ message: "Login successful", type: "success" });
+          router.push("/admin");
         },
         onError: (err) => {
           CustomToast({
@@ -88,12 +87,11 @@ const Login = () => {
               type="submit"
               className="p-3 bg-red border border-red hover:bg-opacity-0 hover:text-red text-white rounded-md w-full mt-10"
             >
-              {isPending ? "Logging in..." : "Create account"}
+              {isPending ? "Logging in..." : "Login"}
             </button>
           </form>
         </FormikProvider>
       </div>
-      <ToastContainer />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { useCreateAccount } from "@/api-services/auth";
+import CustomToast from "@/components/CustomToast";
 import Letmetelusumm from "@/components/letmetelusumm";
 import { FormikProvider, useFormik } from "formik";
 import { useRouter } from "next/router";
@@ -13,7 +14,21 @@ const Register = () => {
       email: "",
     },
     onSubmit: (values) => {
-      createUser(values, { onSuccess: () => router.push("/") });
+      createUser(values, {
+        onSuccess: () => {
+          CustomToast({
+            message: "Account created successfully",
+            type: "success",
+          });
+          router.push("/");
+        },
+        onError: (err) => {
+          CustomToast({
+            message: err.message,
+            type: "error",
+          });
+        },
+      });
     },
   });
   const { setFieldValue } = formik;

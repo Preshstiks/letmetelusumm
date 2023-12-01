@@ -1,4 +1,4 @@
-export const adminData = [
+export const analytics = [
   {
     title: "Total Visitors",
     total: "74",

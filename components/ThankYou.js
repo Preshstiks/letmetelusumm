@@ -1,21 +1,25 @@
 const ThankYou = () => {
   return (
-    <div className="font-playfair">
+    <div className="font-playfair bg-dime h-screen flex items-center justify-center text-center">
       <div>
         <div>
-          <h1 className="font-bebas text-[25px]">THANK YOU</h1>
+          <h1 className="font-bebas text-[1.875rem] text-red">THANK YOU</h1>
         </div>
         <div>
-          <p>Our team will review your case and get back to you shortly.</p>
+          <p className="text-[1.125rem] py-1">
+            Our team will review your case and get back to you shortly.
+          </p>
         </div>
-        <div>
-          <p>
+        <div className="px-[10%]">
+          <p className="text-[1.125rem] py-1">
             We appreciate your patience as we ensure a fair and respectful
             community for all users.
           </p>
         </div>
         <div>
-          <p>If you have urgent concerns, please contact our support team.</p>
+          <p className="text-[1.125rem] py-1">
+            If you have urgent concerns, please contact our support team.
+          </p>
         </div>
       </div>
     </div>

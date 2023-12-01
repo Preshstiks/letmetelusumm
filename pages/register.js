@@ -1,18 +1,19 @@
-import { useLogin } from "@/api-services/auth";
+import { useCreateAccount } from "@/api-services/auth";
 import Letmetelusumm from "@/components/letmetelusumm";
 import { FormikProvider, useFormik } from "formik";
 import { useRouter } from "next/router";
-const Login = () => {
+const Register = () => {
   const router = useRouter();
-  const { mutate: loginUser, isPending } = useLogin();
+  const { mutate: createUser, isPending } = useCreateAccount();
   const formik = useFormik({
     validationSchema: "",
     initialValues: {
+      first_name: "",
+      last_name: "",
       email: "",
-      password: "",
     },
     onSubmit: (values) => {
-      loginUser(values, { onSuccess: () => router.push("/") });
+      createUser(values, { onSuccess: () => router.push("/") });
     },
   });
   const { setFieldValue } = formik;
@@ -30,13 +31,45 @@ const Login = () => {
         <h1 className="font-bebas py-3 text-black text-[27px]">
           LETMETEL<span className="text-red">USUMM</span>
         </h1>
-        <h1 className="font-bebas py-3 text-[23px]">LOGIN TO CONTINUE</h1>
+        <h1 className="font-bebas py-3 text-[23px]">CREATE AN ACCOUNT</h1>
 
         <FormikProvider value={formik}>
           <form
             className="font-playfair text-[15px] space-y-[2.81rem]"
             onSubmit={formik.handleSubmit}
           >
+            <div>
+              <div className="pt-2 pb-1.5">
+                <label className="">Firstname</label>
+              </div>
+              <div>
+                <input
+                  className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
+                  type="text"
+                  name="first_name"
+                  id="first_name"
+                  onChange={({ target: { value } }) =>
+                    setFieldValue("first_name", value)
+                  }
+                />
+              </div>
+            </div>
+            <div>
+              <div className="pt-2 pb-1.5">
+                <label className="">Lastname</label>
+              </div>
+              <div>
+                <input
+                  className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
+                  type="text"
+                  name="last_name"
+                  id="last_name"
+                  onChange={({ target: { value } }) =>
+                    setFieldValue("last_name", value)
+                  }
+                />
+              </div>
+            </div>
             <div>
               <div className="pt-2 pb-1.5">
                 <label>Email</label>
@@ -53,27 +86,11 @@ const Login = () => {
                 />
               </div>
             </div>
-            <div>
-              <div className="pt-2 pb-1.5">
-                <label>Password</label>
-              </div>
-              <div>
-                <input
-                  className="px-4 py-2.5 outline-none border border-gray rounded-md w-full"
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={({ target: { value } }) =>
-                    setFieldValue("password", value)
-                  }
-                />
-              </div>
-            </div>
             <button
               type="submit"
               className="p-3 bg-red border border-red hover:bg-opacity-0 hover:text-red text-white rounded-md w-full mt-10"
             >
-              {isPending ? "Logging in..." : "Create account"}
+              {isPending ? "Creating..." : "Create account"}
             </button>
           </form>
         </FormikProvider>
@@ -82,4 +99,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

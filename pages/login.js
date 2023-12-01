@@ -1,7 +1,11 @@
 import { useLogin } from "@/api-services/auth";
+import CustomToast from "@/components/CustomToast";
 import Letmetelusumm from "@/components/letmetelusumm";
 import { FormikProvider, useFormik } from "formik";
 import { useRouter } from "next/router";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const Login = () => {
   const router = useRouter();
   const { mutate: loginUser, isPending } = useLogin();
@@ -12,7 +16,18 @@ const Login = () => {
       password: "",
     },
     onSubmit: (values) => {
-      loginUser(values, { onSuccess: () => router.push("/") });
+      loginUser(values, {
+        onSuccess: () => {
+          CustomToast({ message: "Login successful", type: "success" });
+          router.push("/");
+        },
+        onError: (error) => {
+          CustomToast({
+            message: error.message,
+            type: "error",
+          });
+        },
+      });
     },
   });
   const { setFieldValue } = formik;
@@ -78,6 +93,7 @@ const Login = () => {
           </form>
         </FormikProvider>
       </div>
+      <ToastContainer />
     </div>
   );
 };

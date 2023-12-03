@@ -1,13 +1,30 @@
-import { useGetSinglePost } from "@/api-services/post";
+import { useGetSinglePost, usePostComment } from "@/api-services/post";
 import Comment from "@/components/Comment";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { format, formatDistance, formatRelative, subDays } from "date-fns";
+import SendIcon from "@/components/icons/SendIcon";
 
 const BlogPost = () => {
   const router = useRouter();
   useEffect(() => console.log({ id: router.query }), [router]);
   const { data, isLoading } = useGetSinglePost({ id: router.query?.post });
+  const [displayedComments, setDisplayedComments] = useState();
+  const { mutate: postComment, isPending } = usePostComment();
+  const [newComment, setNewComment] = useState();
+  const fetchedComments = useMemo(() => {
+    data?.comments;
+  }, [data]);
+  const handlePostComment = () => {
+    postComment(
+      {
+        post_id: router.query?.post,
+        author: "6565c4296659f94784130a6f",
+        body: newComment,
+      },
+      { onSuccess: () => setNewComment("") }
+    );
+  };
   return (
     <div className="bg-dime pt-[60px] h-screen px-[10%] flex minilg:flex-row flex-col justify-between gap-8">
       <div className="basis-[50%] relative min-w-[50%]  bg-white shadow-md max-h-[85%]">
@@ -236,7 +253,8 @@ const BlogPost = () => {
             LETMETEL<span className="text-red">USUMM</span>
           </h1>
           <p className="font-playfair text-[13px]">
-            23rd November 2023, 10:23pm
+            {data?.createdAt &&
+              format(new Date(data?.createdAt), "do MMMM yyyy, h:mma")}
           </p>
           <q className="uppercase font-bebas text-[18px]">{data?.title}</q>
           <p className="font-playfair">{data?.body}</p>
@@ -254,7 +272,16 @@ const BlogPost = () => {
             placeholder="Message..."
             className=" w-full rounded-md resize-none placeholder:text-black font-playfair border border-gray outline-none p-7"
             rows={2}
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
           />
+          <button
+            type="submit"
+            onClick={handlePostComment}
+            className="p-3 bg-red border border-red hover:bg-opacity-0 hover:text-red text-white rounded-md w-full mt-1"
+          >
+            {isPending ? "Posting..." : "Comment"}
+          </button>
         </div>
       </div>
     </div>

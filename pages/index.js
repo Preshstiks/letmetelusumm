@@ -18,7 +18,7 @@ export default function Home() {
           </div>
           <div className="hidden flex-wrap gap-[25px] maxlg:flex pt-10">
             {data &&
-              data.map((item) => (
+              data?.map((item) => (
                 <Quote
                   key={item?._id}
                   title={item?.title}

@@ -4,6 +4,11 @@ import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import { format, formatDistance, formatRelative, subDays } from "date-fns";
 import SendIcon from "@/components/icons/SendIcon";
+import Warning from "@/components/Warning";
+import Oops from "@/components/Oops";
+import FinalWarning from "@/components/FinalWarning";
+import Modal from "@/components/Modal";
+import Suspended from "@/components/Suspended";
 
 const BlogPost = () => {
   const router = useRouter();
@@ -12,21 +17,45 @@ const BlogPost = () => {
   const [displayedComments, setDisplayedComments] = useState();
   const { mutate: postComment, isPending } = usePostComment();
   const [newComment, setNewComment] = useState();
+  const [isOpen, setIsOpen] = useState({ open: false, modal: 1 });
   const fetchedComments = useMemo(() => {
     data?.comments;
   }, [data]);
+  const [postedComment, setPostedComment] = useState();
+  const Modals = {
+    1: <Warning />,
+    2: <Oops />,
+    3: <FinalWarning />,
+    4: <Suspended />,
+  };
   const handlePostComment = () => {
     postComment(
       {
         post_id: router.query?.post,
-        author: "6565c4296659f94784130a6f",
+        author: "6565dda494ccf2a9adf1a90f",
         body: newComment,
       },
-      { onSuccess: () => setNewComment("") }
+      {
+        onSuccess: (res) => {
+          setNewComment("");
+          setPostedComment(res?.data);
+          console.log({ res });
+        },
+      }
     );
   };
+  useEffect(() => {
+    if (postedComment && postedComment?.comment?.isFlagged)
+      setIsOpen({ open: true, modal: postedComment.user?.flags });
+  }, [postedComment]);
   return (
     <div className="bg-dime pt-[60px] h-screen px-[10%] flex minilg:flex-row flex-col justify-between gap-8">
+      <Modal
+        isOpen={isOpen.open}
+        onClose={() => setIsOpen({ open: false, modal: 1 })}
+      >
+        {Modals[isOpen.modal]}
+      </Modal>
       <div className="basis-[50%] relative min-w-[50%]  bg-white shadow-md max-h-[85%]">
         <div className="p-8  overflow-y-auto h-full">
           <div className="absolute top-[-18px] z-20 left-[-18px]">

@@ -1,6 +1,6 @@
 const Warning = () => {
   return (
-    <div className="font-playfair bg-dime h-screen flex items-center justify-center text-center">
+    <div className="font-playfair bg-dime h-max flex items-center justify-center text-center">
       <div>
         <div className="pb-3">
           <h1 className="font-bebas text-[1.875rem] text-red">WARNING</h1>
